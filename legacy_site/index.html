@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shaswot Bhandari — Designer & Developer</title>
-  <meta name="description" content="Shaswot Bhandari portfolio featuring design, education, services, and contact details." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D0D0D'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='30' font-family='Georgia,serif' fill='%23F4F0E8'%3ESB%3C/text%3E%3C/svg%3E" />
+  <meta name="description"
+    content="Shaswot Bhandari portfolio featuring design, education, services, and contact details." />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D0D0D'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='30' font-family='Georgia,serif' fill='%23F4F0E8'%3ESB%3C/text%3E%3C/svg%3E" />
 
   <!-- Fonts: Cormorant Garamond (display) + Syne (UI/body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,6 +23,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
   <!-- Page Loader -->
@@ -53,17 +59,18 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="#hero"    class="nav-link">Home</a>
-      <a href="#about"    class="nav-link">About</a>
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
       <a href="#education" class="nav-link">Education</a>
       <a href="#achievements" class="nav-link">Achievements</a>
       <a href="#projects" class="nav-link">Projects</a>
-      <a href="#skills"   class="nav-link">Skills</a>
-      <a href="#contact"  class="nav-link">Contact</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
     <div class="nav-actions">
       <a href="#contact" class="nav-cta">Send Message ↗</a>
-      <button class="hamburger" id="mobile-menu-btn" aria-label="Open mobile menu" aria-controls="mobile-menu" aria-expanded="false">
+      <button class="hamburger" id="mobile-menu-btn" aria-label="Open mobile menu" aria-controls="mobile-menu"
+        aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -89,6 +96,9 @@
   <!-- ═══════════════════ HERO ═══════════════════ -->
   <section id="hero">
 
+    <!-- Interactive starfield canvas -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
     <!-- Top label -->
     <div class="hero-tag" id="hero-tag">HELLO, I AM</div>
 
@@ -105,8 +115,10 @@
     </p>
 
     <div class="hero-quick-links" id="hero-quick-links">
-      <a href="https://github.com/ShaswotBh" target="_blank" rel="noopener noreferrer" class="hero-quick-link">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/shaswot-bhandari-508b73283" target="_blank" rel="noopener noreferrer" class="hero-quick-link">LinkedIn ↗</a>
+      <a href="https://github.com/ShaswotBh" target="_blank" rel="noopener noreferrer" class="hero-quick-link">GitHub
+        ↗</a>
+      <a href="https://www.linkedin.com/in/shaswot-bhandari-508b73283" target="_blank" rel="noopener noreferrer"
+        class="hero-quick-link">LinkedIn ↗</a>
     </div>
 
     <!-- Bottom info bar -->
@@ -147,18 +159,25 @@
       <!-- Right: content -->
       <div class="about-right">
         <p class="about-text reveal-up">
-          I’m Shaswot Bhandari, a designer and developer who likes simple, thoughtful interfaces and clean visual communication. I enjoy working on projects that feel calm, useful, and visually strong.
+          I’m Shaswot Bhandari, a designer and developer who likes simple, thoughtful interfaces and clean visual
+          communication. I enjoy working on projects that feel calm, useful, and visually strong.
         </p>
         <p class="about-text reveal-up">
-          I’m currently in my 3rd year at IIMS College, Bhagwati Bahal, Naxal, Kathmandu, pursuing a Bachelor of Computer Science (Hons) with AI specialization. The program is affiliated with Taylor’s University of Malaysia. Experience: [Add experience details here].
+          I’m currently in my 3rd year at IIMS College, Bhagwati Bahal, Naxal, Kathmandu, pursuing a Bachelor of
+          Computer Science (Hons) with AI specialization. The program is affiliated with Taylor’s University of
+          Malaysia. Experience: [Add experience details here].
         </p>
 
         <div class="about-links reveal-up">
-          <a href="https://www.behance.net/shaswotbhandari" target="_blank" class="view-all-btn cta-match-header">Design Portfolio <span>↗</span></a>
-          <a href="https://github.com/ShaswotBh" target="_blank" rel="noopener noreferrer" class="view-all-btn cta-match-header">GitHub <span>↗</span></a>
-          <a href="https://www.linkedin.com/in/shaswot-bhandari-508b73283" target="_blank" rel="noopener noreferrer" class="view-all-btn cta-match-header">LinkedIn <span>↗</span></a>
+          <a href="https://www.behance.net/shaswotbhandari" target="_blank" class="view-all-btn cta-match-header">Design
+            Portfolio <span>↗</span></a>
+          <a href="https://github.com/ShaswotBh" target="_blank" rel="noopener noreferrer"
+            class="view-all-btn cta-match-header">GitHub <span>↗</span></a>
+          <a href="https://www.linkedin.com/in/shaswot-bhandari-508b73283" target="_blank" rel="noopener noreferrer"
+            class="view-all-btn cta-match-header">LinkedIn <span>↗</span></a>
           <a href="#contact" class="view-all-btn cta-match-header">Send Message <span>↗</span></a>
-          <a href="images/Shaswot_Bhandari_CV.pdf" target="_blank" rel="noopener noreferrer" class="view-all-btn cta-match-header">Download CV <span>↗</span></a>
+          <a href="images/Shaswot_Bhandari_CV.pdf" target="_blank" rel="noopener noreferrer"
+            class="view-all-btn cta-match-header">Download CV <span>↗</span></a>
         </div>
 
         <!-- Photo — replace src with your actual photo -->
@@ -208,7 +227,8 @@
     <div class="achievements-shell">
       <div class="achievements-intro reveal-up">
         <p class="achievements-kicker">Milestones Board</p>
-        <p class="achievements-lede">A curated snapshot of learning, leadership, and showcase moments. Replace each placeholder with your real details.</p>
+        <p class="achievements-lede">A curated snapshot of learning, leadership, and showcase moments. Replace each
+          placeholder with your real details.</p>
       </div>
 
       <div class="achievements-mosaic">
@@ -346,7 +366,8 @@
         </div>
       </a>
 
-      <a href="https://www.behance.net/shaswotbhandari" class="project-item project-link-transition" data-color="#F0EAE6">
+      <a href="https://www.behance.net/shaswotbhandari" class="project-item project-link-transition"
+        data-color="#F0EAE6">
         <div class="project-left">
           <span class="project-num">04</span>
           <div class="project-info">
@@ -374,22 +395,28 @@
     <div class="my-project-wrap reveal-up">
       <p class="my-project-note">Extra visual snapshots</p>
       <div class="my-project-grid">
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Apple Juice Ad project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Apple Juice Ad project preview">
           <img src="images/Apple-Juice-Ad.jpg" alt="Apple Juice Ad project preview" />
         </button>
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Coffee Ad project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Coffee Ad project preview">
           <img src="images/Coffee-ad.jpg" alt="Coffee Ad project preview" />
         </button>
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Hot and Spicy project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Hot and Spicy project preview">
           <img src="images/Hot-&-Spicy.jpg" alt="Hot and Spicy project preview" />
         </button>
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Senna Formula 1 project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Senna Formula 1 project preview">
           <img src="images/Senna-(F1).jpg" alt="Senna Formula 1 project preview" />
         </button>
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Sprite Ad project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Sprite Ad project preview">
           <img src="images/Sprite-Ad.jpg" alt="Sprite Ad project preview" />
         </button>
-        <button type="button" class="my-project-thumb project-thumb-trigger" aria-label="Open Untitled concept project preview">
+        <button type="button" class="my-project-thumb project-thumb-trigger"
+          aria-label="Open Untitled concept project preview">
           <img src="images/Untitled-1.jpg" alt="Untitled concept project preview" />
         </button>
       </div>
@@ -483,7 +510,8 @@
       <h2 class="contact-headline reveal-up">
         Send a<br /><em>message.</em>
       </h2>
-      <a href="mailto:shaswotbhandari1@gmail.com" class="contact-email reveal-up" id="copy-email" data-copy-text="shaswotbhandari1@gmail.com">shaswotbhandari1@gmail.com</a>
+      <a href="mailto:shaswotbhandari1@gmail.com" class="contact-email reveal-up" id="copy-email"
+        data-copy-text="shaswotbhandari1@gmail.com">shaswotbhandari1@gmail.com</a>
 
       <div class="contact-details reveal-up">
         <span>Kathmandu, Nepal</span>
@@ -491,11 +519,7 @@
         <span>[Add extra contact detail]</span>
       </div>
 
-      <form
-        class="message-form reveal-up"
-        action="https://formsubmit.co/ajax/shaswotbhandari1@gmail.com"
-        method="POST"
-      >
+      <form class="message-form reveal-up" action="https://formsubmit.co/ajax/shaswotbhandari1@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Portfolio Message" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
@@ -567,37 +591,37 @@
 
   <div class="copy-toast" id="copy-toast" aria-live="polite" aria-atomic="true">Copied</div>
 
-  <div class="message-popup" id="message-popup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="message-popup-title">
+  <div class="message-popup" id="message-popup" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="message-popup-title">
     <div class="message-popup-card">
       <p class="message-popup-kicker">Contact</p>
       <h3 class="message-popup-title" id="message-popup-title">Your message has been sent.</h3>
-      <p class="message-popup-text" id="message-popup-text">Thanks for reaching out. Click below to continue browsing the page.</p>
-      <button type="button" class="view-all-btn message-popup-close" id="message-popup-close">Back to page <span>↗</span></button>
+      <p class="message-popup-text" id="message-popup-text">Thanks for reaching out. Click below to continue browsing
+        the page.</p>
+      <button type="button" class="view-all-btn message-popup-close" id="message-popup-close">Back to page
+        <span>↗</span></button>
     </div>
   </div>
 
-  <div class="project-popup" id="project-popup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="project-popup-title">
+  <div class="project-popup" id="project-popup" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="project-popup-title">
     <div class="project-popup-dialog">
       <p class="project-popup-title" id="project-popup-title">Project Preview</p>
-      <button type="button" class="project-popup-close" id="project-popup-close" aria-label="Close project preview">×</button>
+      <button type="button" class="project-popup-close" id="project-popup-close"
+        aria-label="Close project preview">×</button>
       <img src="" alt="Enlarged project preview" class="project-popup-image" id="project-popup-image" />
     </div>
   </div>
 
-  <button
-    type="button"
-    class="back-to-hero"
-    id="back-to-hero"
-    aria-label="Back to hero section"
-    aria-hidden="true"
-    title="Back to top"
-  >
+  <button type="button" class="back-to-hero" id="back-to-hero" aria-label="Back to hero section" aria-hidden="true"
+    title="Back to top">
     ↑
   </button>
 
   <div class="freeze-overlay" id="freeze-overlay" aria-hidden="true"></div>
 
-  <div class="truth-modal" id="truth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="truth-modal-title">
+  <div class="truth-modal" id="truth-modal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="truth-modal-title">
     <div class="truth-modal-dialog">
       <button type="button" class="truth-modal-close" id="truth-modal-close" aria-label="Close profile mode">×</button>
       <p class="truth-modal-kicker">Profile mode</p>
@@ -615,4 +639,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
