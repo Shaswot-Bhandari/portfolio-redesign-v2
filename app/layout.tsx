@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Preloader from "@/components/Preloader";
-import CustomCursor from "@/components/CustomCursor";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -32,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${cormorant.variable} ${jetbrains.variable} antialiased selection:bg-accent selection:text-white relative bg-dot-grid`}
+        className={`${cormorant.variable} ${jetbrains.variable} antialiased selection:bg-accent selection:text-white relative bg-background`}
       >
         <ThemeProvider
           attribute="class"
@@ -40,8 +38,6 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Preloader />
-          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>
