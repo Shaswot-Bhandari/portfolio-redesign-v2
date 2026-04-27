@@ -200,7 +200,7 @@ function setLogoIdle(isIdle) {
     opacity: 1,
     filter: 'blur(0px)',
     duration: 0.7,
-    ease: 'back.out(1.35)'
+    ease: 'power3.out'
   });
 }
 

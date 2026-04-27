@@ -1,14 +1,63 @@
 "use client";
 
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const mousePosRef = useRef({ x: 0.5, y: 0.5 });
+  const lerpedRef = useRef({ x: 0.5, y: 0.5 });
+  const rafRef = useRef<number>(0);
+  const gradientDivRef = useRef<HTMLDivElement | null>(null);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleMouseMove = (e: MouseEvent) => {
+      mousePosRef.current = {
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      };
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const lerpFactor = 0.05;
+    const animate = () => {
+      lerpedRef.current.x += (mousePosRef.current.x - lerpedRef.current.x) * lerpFactor;
+      lerpedRef.current.y += (mousePosRef.current.y - lerpedRef.current.y) * lerpFactor;
+      if (gradientDivRef.current) {
+        const theme = document.documentElement.getAttribute("data-theme");
+        const isDark = theme === "dark";
+        gradientDivRef.current.style.background = isDark
+          ? `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(40,40,60,0.45) 0%, transparent 70%)`
+          : `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(220,210,200,0.35) 0%, transparent 70%)`;
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 md:pt-36 overflow-hidden"
     >
-      <div className="max-w-7xl relative z-10">
+      {/* Film grain texture layer */}
+      {mounted && <div className="hero-grain" />}
+
+      {/* Mouse-reactive gradient layer */}
+      {mounted && (
+        <div
+          ref={gradientDivRef}
+          className="absolute inset-0 z-0 pointer-events-none"
+        />
+      )}
+
+      <div className="max-w-7xl relative z-20">
         
         {/* Raw Timestamp */}
         <motion.div
@@ -26,7 +75,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl md:text-8xl lg:text-[11rem] leading-[0.8] tracking-tight-super optical-align-left text-foreground"
+            className="font-display text-[clamp(2.6rem,10vw,11rem)] leading-[0.82] tracking-tight-super optical-align-left text-foreground"
           >
             Design
           </motion.h1>
@@ -35,7 +84,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl md:text-8xl lg:text-[11rem] leading-[0.8] tracking-tight-super text-foreground/40 italic ml-0 md:ml-32"
+            className="font-display text-[clamp(2.6rem,10vw,11rem)] leading-[0.82] tracking-tight-super text-foreground/40 italic ml-0 md:ml-32"
           >
             with intent.
           </motion.h1>

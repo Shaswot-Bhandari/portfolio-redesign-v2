@@ -1,0 +1,66 @@
+.bubble-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+}
+.bubble-menu.fixed { position: fixed; top: 1.2rem; right: 1.2rem; }
+.bubble-menu.absolute { position: absolute; top: 1.2rem; right: 1.2rem; }
+.bubble {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.bubble:hover { transform: scale(1.07); }
+.logo-bubble { font-size: 1.1rem; font-weight: 700; pointer-events: none; }
+.bubble-logo { width: 28px; height: 28px; object-fit: contain; }
+.logo-content { display: flex; align-items: center; justify-content: center; }
+.menu-btn { border: none; flex-direction: column; gap: 5px; background: transparent; }
+.menu-line {
+  display: block; width: 22px; height: 2px;
+  border-radius: 2px; transition: all 0.3s ease;
+}
+.menu-line.short { width: 14px; align-self: flex-end; }
+.menu-btn.open .menu-line { width: 20px; }
+.menu-btn.open .menu-line.short { width: 20px; }
+.bubble-menu-items {
+  display: none;
+  z-index: 999;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+}
+.bubble-menu-items.fixed { position: fixed; }
+.bubble-menu-items.absolute { position: absolute; }
+.pill-list {
+  display: flex; flex-wrap: wrap;
+  gap: 1.2rem; list-style: none;
+  margin: 0; padding: 0;
+  justify-content: center; align-items: center;
+  max-width: 360px;
+}
+.pill-col { display: flex; align-items: center; justify-content: center; }
+.pill-link {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 100px; min-height: 52px;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-color);
+  font-size: 1rem; font-weight: 600;
+  text-decoration: none;
+  padding: 0 1.5rem;
+  transform: rotate(var(--item-rot, 0deg));
+  box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.pill-link:hover {
+  background: var(--hover-bg);
+  color: var(--hover-color);
+  transform: rotate(0deg) scale(1.06);
+}
+.pill-label { pointer-events: none; }

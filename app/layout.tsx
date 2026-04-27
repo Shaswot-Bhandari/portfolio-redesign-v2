@@ -1,25 +1,52 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
+import { Oswald, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ThemeBackground from "@/components/ThemeBackground";
 
-const cormorant = Cormorant_Garamond({
+const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  weight: ["400", "500", "600"],
+  variable: "--font-oswald",
   display: 'swap',
 });
 
-const jetbrains = JetBrains_Mono({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: ["300", "400", "600"],
+  variable: "--font-source-sans",
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Shaswot Bhandari | Latent Space",
-  description: "Portfolio of Shaswot Bhandari. Designer & Developer.",
+  metadataBase: new URL("https://shaswotbhandari.com.np"),
+  title: "Shaswot Bhandari — Designer & Developer",
+  description:
+    "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+  openGraph: {
+    title: "Shaswot Bhandari — Designer & Developer",
+    description:
+      "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+    url: "https://shaswotbhandari.com.np",
+    siteName: "Shaswot Bhandari",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shaswot Bhandari — Designer & Developer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shaswot Bhandari — Designer & Developer",
+    description:
+      "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+    images: ["/images/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -30,14 +57,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${cormorant.variable} ${jetbrains.variable} antialiased selection:bg-accent selection:text-white relative bg-background`}
+        className={`${oswald.variable} ${sourceSans.variable} font-sans antialiased selection:bg-accent selection:text-white relative bg-background`}
       >
         <ThemeProvider
-          attribute="class"
+          attribute="data-theme"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
+          <ThemeBackground />
           {children}
         </ThemeProvider>
       </body>
