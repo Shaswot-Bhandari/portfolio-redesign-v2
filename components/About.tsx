@@ -1,5 +1,6 @@
 "use client";
 
+import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -11,13 +12,58 @@ export default function About() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsLightboxOpen(false);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsLightboxOpen(false);
+        return;
+      }
+      
+      if (e.key !== "Tab") return;
+      const root = dialogRef.current;
+      if (!root) return;
+
+      const focusable = Array.from(
+        root.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => !el.hasAttribute("disabled") && el.tabIndex !== -1);
+
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey) {
+        if (!active || active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     if (isLightboxOpen) window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isLightboxOpen]);
 
   useEffect(() => {
@@ -31,19 +77,18 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative bg-background pt-32 md:pt-48 px-6 md:px-12 overflow-hidden"
+      className="relative py-24 px-6 md:px-12 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
 
-        {/* Timestamp */}
-        <div className="md:col-span-2 font-mono text-[10px] text-muted tracking-wide-super uppercase">
-          <span className="text-accent">02.</span> About
-        </div>
-
-        <div className="md:col-span-10 md:col-start-3">
+        {/* Label + Heading flush left — spans full width */}
+        <div className="md:col-span-12 flex flex-col gap-2 mb-8">
+          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
+            <span className="text-accent">02.</span> About
+          </div>
           <ScrollFloat
             animationDuration={0.6}
-            ease="power3.out"
+            ease={[0.16, 1, 0.3, 1]}
             scrollStart="top 95%"
             scrollEnd="bottom 20%"
             stagger={0.03}
@@ -62,6 +107,15 @@ export default function About() {
           className="md:col-span-4 relative group"
         >
           <div
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                triggerRef.current = document.activeElement as HTMLElement | null;
+                setIsLightboxOpen(true);
+              }
+            }}
             className="relative w-full aspect-[3/4] overflow-hidden grayscale contrast-125 brightness-90 
                        cursor-zoom-in transition-all duration-700 ease-out
                        group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 
@@ -162,47 +216,51 @@ export default function About() {
       </div>
 
       {/* Lightbox Overlay */}
-      <AnimatePresence>
-        {isLightboxOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            onClick={() => setIsLightboxOpen(false)}
-            role="dialog"
-            aria-modal="true"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-6 cursor-zoom-out"
-          >
-            <button
-              ref={closeButtonRef}
-              aria-label="Close image"
-              className="absolute top-6 right-6 md:top-10 md:right-10 text-muted hover:text-accent transition-colors p-2"
-              onClick={() => setIsLightboxOpen(false)}
-            >
-              <X size={32} strokeWidth={1} />
-            </button>
-
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {isLightboxOpen && (
             <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full max-w-2xl aspect-[3/4] overflow-hidden shadow-2xl cursor-default border border-muted/20"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              onClick={() => setIsLightboxOpen(false)}
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-6 cursor-zoom-out"
             >
-              <Image
-                src="/images/profile-photo.png"
-                alt="Shaswot Bhandari"
-                fill
-                sizes="(max-width: 768px) 90vw, 50vw"
-                className="object-cover"
-                priority
-              />
+              <button
+                ref={closeButtonRef}
+                aria-label="Close image"
+                className="absolute top-6 right-6 md:top-10 md:right-10 text-muted hover:text-accent transition-colors p-2"
+                onClick={() => setIsLightboxOpen(false)}
+              >
+                <X size={32} strokeWidth={1} />
+              </button>
+
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative w-full max-w-[calc(85vh*0.75)] aspect-[3/4] overflow-hidden shadow-2xl cursor-default border border-muted/20"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src="/images/profile-photo.png"
+                  alt="Shaswot Bhandari"
+                  fill
+                  sizes="(max-width: 768px) 90vw, 50vw"
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }

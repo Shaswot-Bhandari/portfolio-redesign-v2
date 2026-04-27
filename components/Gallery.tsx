@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -21,7 +22,7 @@ export default function Gallery() {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
-  const close = () => setSelectedImage(null);
+  const close = React.useCallback(() => setSelectedImage(null), []);
 
   useEffect(() => {
     if (!selectedImage) return;
@@ -74,23 +75,23 @@ export default function Gallery() {
       previouslyFocusedRef.current?.focus?.();
       previouslyFocusedRef.current = null;
     };
-  }, [selectedImage]);
+  }, [selectedImage, close]);
 
   return (
     <section
       id="gallery"
-      className="py-32 md:py-48 px-6 md:px-12 relative border-t border-muted/20 overflow-hidden"
+      className="py-24 px-6 md:px-12 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col items-start mb-16 md:mb-32">
-          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-4">
+        <div className="flex flex-col items-start gap-2 mb-16 md:mb-24">
+          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
             <span className="text-accent">06.</span> Archive
           </div>
           <ScrollFloat
             animationDuration={0.6}
-            ease="power3.out"
+            ease={[0.16, 1, 0.3, 1]}
             scrollStart="top 95%"
             scrollEnd="bottom 20%"
             stagger={0.03}
@@ -144,6 +145,7 @@ export default function Gallery() {
                   alt={img.alt}
                   width={800}
                   height={1000}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-auto object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-background/90 to-transparent">

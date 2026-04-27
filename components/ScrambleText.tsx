@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+
 
 // Wide dramatic glitch character set
 const GLITCH_CHARS = "!<>-_\\/[]{}—=+*^?#@$%&|~`'\";:.,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890█▓▒░▄▀■□▪▫";
@@ -69,14 +69,20 @@ export default function ScrambleText({ text, className, passes = 2, delay = 2600
     };
 
     timerRef.current = setTimeout(() => {
-      // GSAP flash-in before scramble starts
+      // Native animation before scramble starts
       if (spanRef.current) {
-        gsap.fromTo(
-          spanRef.current,
-          { opacity: 0, skewX: -8 },
-          { opacity: 1, skewX: 0, duration: 0.4, ease: "power3.out",
-            onComplete: runPass }
+        const animation = spanRef.current.animate(
+          [
+            { opacity: 0, transform: 'skewX(-8deg)' },
+            { opacity: 1, transform: 'skewX(0deg)' }
+          ],
+          {
+            duration: 400,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            fill: 'forwards'
+          }
         );
+        animation.onfinish = runPass;
       } else {
         runPass();
       }

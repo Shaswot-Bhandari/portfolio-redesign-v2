@@ -72,15 +72,15 @@ export default function Credentials() {
   ];
 
   return (
-    <section className="py-32 md:py-48 px-6 md:px-12 relative border-t border-muted/10">
+    <section className="py-24 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-start mb-16 md:mb-32">
-          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-4">
+        <div className="flex flex-col items-start gap-2 mb-16 md:mb-24">
+          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
             <span className="text-accent">05.</span> Credentials
           </div>
           <ScrollFloat
             animationDuration={0.6}
-            ease="power3.out"
+            ease={[0.16, 1, 0.3, 1]}
             scrollStart="top 95%"
             scrollEnd="bottom 20%"
             stagger={0.03}

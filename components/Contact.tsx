@@ -38,6 +38,7 @@ export default function Contact() {
     e.preventDefault();
     setStatus("loading");
     
+    abortRef.current?.abort();
     const formData = new FormData(e.currentTarget);
     
     try {
@@ -55,8 +56,7 @@ export default function Contact() {
         setStatus("error");
       }
     } catch (err: unknown) {
-      const maybeErr = err as { name?: string };
-      if (maybeErr?.name === "AbortError") return;
+      if (err instanceof Error && err.name === "AbortError") return;
       setStatus("error");
     }
   };
@@ -64,11 +64,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-32 md:py-48 px-6 md:px-12 relative border-t border-muted/20"
+      className="py-24 px-6 md:px-12 relative"
     >
       <div className="max-w-7xl mx-auto flex flex-col relative z-10">
         
-        <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-16 md:mb-24">
+        <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-4">
           <span className="text-accent">07.</span> Let&apos;s Talk
         </div>
 

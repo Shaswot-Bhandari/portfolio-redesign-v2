@@ -1,13 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import './ScrollFloat.css';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const ScrollFloat = ({
   children,
@@ -15,12 +10,11 @@ const ScrollFloat = ({
   containerClassName = '',
   textClassName = '',
   animationDuration = 0.6,
-  ease = 'power3.out',
-  scrollStart = 'top 95%',
+  ease = [0.16, 1, 0.3, 1], // Custom cubic-bezier matching power3.out
+  scrollStart = 'top 95%', // Note: framer-motion useInView uses margin, we'll use viewport prop
   scrollEnd = 'bottom 20%',
   stagger = 0.03
 }) => {
-  const containerRef = useRef(null);
   const splitText = useMemo(() => {
     const text = typeof children === 'string' ? children : '';
     const tokens = text.split(/(\s+)/);
@@ -35,59 +29,42 @@ const ScrollFloat = ({
       }
 
       return (
-        <span className="word" key={`w-${tokenIndex}`}>
+        <span className="word" key={`w-${tokenIndex}`} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
           {token.split('').map((char, charIndex) => (
-            <span className="char" key={`${tokenIndex}-${charIndex}`}>
+            <motion.span
+              key={`${tokenIndex}-${charIndex}`}
+              className="char"
+              variants={{
+                hidden: { opacity: 0, y: "60%", scaleY: 1.3, scaleX: 0.95 },
+                visible: { opacity: 1, y: 0, scaleY: 1, scaleX: 1 }
+              }}
+              transition={{ duration: animationDuration, ease }}
+              style={{ display: 'inline-block', transformOrigin: '50% 0%' }}
+            >
               {char}
-            </span>
+            </motion.span>
           ))}
         </span>
       );
     });
-  }, [children]);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
-    const charElements = el.querySelectorAll('.char');
-    const tween = gsap.fromTo(
-      charElements,
-      {
-        willChange: 'opacity, transform',
-        opacity: 0,
-        yPercent: 60,
-        scaleY: 1.3,
-        scaleX: 0.95,
-        transformOrigin: '50% 0%'
-      },
-      {
-        duration: animationDuration,
-        ease: ease,
-        opacity: 1,
-        yPercent: 0,
-        scaleY: 1,
-        scaleX: 1,
-        stagger: stagger,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: scrollStart,
-          end: scrollEnd,
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
-    };
-  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
+  }, [children, animationDuration, ease]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-float py-6 ${containerClassName}`}>
+    <motion.h2
+      className={`scroll-float py-6 ${containerClassName}`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-10%" }}
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: stagger
+          }
+        }
+      }}
+    >
       <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
-    </h2>
+    </motion.h2>
   );
 };
 

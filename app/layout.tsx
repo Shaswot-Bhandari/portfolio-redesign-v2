@@ -3,6 +3,7 @@ import { Oswald, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeBackground from "@/components/ThemeBackground";
+import SplashCursorWrapper from "@/components/SplashCursorWrapper";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
+        suppressHydrationWarning
         className={`${oswald.variable} ${sourceSans.variable} font-sans antialiased selection:bg-accent selection:text-white relative bg-background`}
       >
         <ThemeProvider
@@ -65,6 +67,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <SplashCursorWrapper />
           <ThemeBackground />
           {children}
         </ThemeProvider>

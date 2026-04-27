@@ -22,6 +22,7 @@
     --accent-rgb: 74, 107, 142;
     --background: var(--bg-color);
     --foreground: var(--fg-color);
+    --divider-color: rgba(0, 0, 0, 0.10);
     /* Soft Slate Blue (Darker for light mode contrast) */
   }
 
@@ -34,6 +35,7 @@
     --accent-rgb: 107, 140, 174;
     --background: var(--bg-color);
     --foreground: var(--fg-color);
+    --divider-color: rgba(255, 255, 255, 0.08);
     /* Soft Slate Blue */
   }
 

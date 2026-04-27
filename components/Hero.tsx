@@ -34,14 +34,19 @@ export default function Hero() {
   useEffect(() => {
     const lerpFactor = 0.05;
     const animate = () => {
-      lerpedRef.current.x += (mousePosRef.current.x - lerpedRef.current.x) * lerpFactor;
-      lerpedRef.current.y += (mousePosRef.current.y - lerpedRef.current.y) * lerpFactor;
-      if (gradientDivRef.current) {
-        const theme = document.documentElement.getAttribute("data-theme");
-        const isDark = theme === "dark";
-        gradientDivRef.current.style.background = isDark
-          ? `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(40,40,60,0.45) 0%, transparent 70%)`
-          : `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(220,210,200,0.35) 0%, transparent 70%)`;
+      const dx = mousePosRef.current.x - lerpedRef.current.x;
+      const dy = mousePosRef.current.y - lerpedRef.current.y;
+      
+      if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) {
+        lerpedRef.current.x += dx * lerpFactor;
+        lerpedRef.current.y += dy * lerpFactor;
+        if (gradientDivRef.current) {
+          const theme = document.documentElement.getAttribute("data-theme");
+          const isDark = theme === "dark";
+          gradientDivRef.current.style.background = isDark
+            ? `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(40,40,60,0.45) 0%, transparent 70%)`
+            : `radial-gradient(ellipse at ${lerpedRef.current.x * 100}% ${lerpedRef.current.y * 100}%, rgba(220,210,200,0.35) 0%, transparent 70%)`;
+        }
       }
       rafRef.current = requestAnimationFrame(animate);
     };

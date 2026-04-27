@@ -7,16 +7,38 @@ import Credentials from "@/components/Credentials";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 
+function SectionDivider() {
+  return (
+    <hr
+      aria-hidden="true"
+      style={{
+        position: "relative",
+        zIndex: 1,
+        pointerEvents: "none",
+        margin: 0,
+        border: "none",
+        borderTop: "1px solid var(--divider-color)",
+      }}
+    />
+  );
+}
+
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="relative z-10 min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Projects />
+      <SectionDivider />
       <Gallery />
+      <SectionDivider />
       <Skills />
+      <SectionDivider />
       <Credentials />
+      <SectionDivider />
       <Contact />
     </main>
   );

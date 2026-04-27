@@ -3,33 +3,30 @@
 import { motion } from "framer-motion";
 import ScrollFloat from "./ScrollFloat";
 import LogoLoop from "./LogoLoop";
-import {
-  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiPython,
-  SiTailwindcss, SiNodedotjs, SiMysql, SiGit, SiGithub,
-  SiFigma,
-  SiFlutter, SiGsap, SiFramer
-} from 'react-icons/si';
-import { FaJava, FaImage, FaPaintBrush, FaVideo } from 'react-icons/fa';
+import { 
+  Code2, Braces, Terminal, Database, GitBranch, GitMerge,
+  PenTool, Image as ImageIcon, Paintbrush, Video, Layout, FileJson,
+  Cpu, Box, PanelsTopLeft, AppWindow, Layers
+} from 'lucide-react';
 
 const techLogos = [
-  { node: <SiReact />, title: 'React' },
-  { node: <SiNextdotjs />, title: 'Next.js' },
-  { node: <SiJavascript />, title: 'JavaScript' },
-  { node: <SiTypescript />, title: 'TypeScript' },
-  { node: <SiPython />, title: 'Python' },
-  { node: <FaJava />, title: 'Java' },
-  { node: <SiTailwindcss />, title: 'Tailwind CSS' },
-  { node: <SiNodedotjs />, title: 'Node.js' },
-  { node: <SiMysql />, title: 'MySQL' },
-  { node: <SiGit />, title: 'Git' },
-  { node: <SiGithub />, title: 'GitHub' },
-  { node: <SiFigma />, title: 'Figma' },
-  { node: <FaImage />, title: 'Photoshop' },
-  { node: <FaPaintBrush />, title: 'Illustrator' },
-  { node: <FaVideo />, title: 'Premiere Pro' },
-  { node: <SiFlutter />, title: 'Flutter' },
-  { node: <SiGsap />, title: 'GSAP' },
-  { node: <SiFramer />, title: 'Framer Motion' },
+  { node: <Code2 />, title: 'React' },
+  { node: <Box />, title: 'Next.js' },
+  { node: <FileJson />, title: 'JavaScript' },
+  { node: <Braces />, title: 'TypeScript' },
+  { node: <Terminal />, title: 'Python' },
+  { node: <Cpu />, title: 'Java' },
+  { node: <Layout />, title: 'Tailwind CSS' },
+  { node: <AppWindow />, title: 'Node.js' },
+  { node: <Database />, title: 'MySQL' },
+  { node: <GitBranch />, title: 'Git' },
+  { node: <GitMerge />, title: 'GitHub' },
+  { node: <PenTool />, title: 'Figma' },
+  { node: <ImageIcon />, title: 'Photoshop' },
+  { node: <Paintbrush />, title: 'Illustrator' },
+  { node: <Video />, title: 'Premiere Pro' },
+  { node: <PanelsTopLeft />, title: 'Flutter' },
+  { node: <Layers />, title: 'Framer Motion' },
 ];
 
 const skillCategories = [
@@ -49,7 +46,7 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 md:py-48 px-6 md:px-12 relative border-t border-muted/20 overflow-hidden">
+    <section id="skills" className="py-24 px-6 md:px-12 relative overflow-hidden">
       <div className="w-full mb-12 md:mb-16">
         <LogoLoop
           logos={techLogos}
@@ -66,15 +63,14 @@ export default function Skills() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
         
-        {/* Timestamp */}
-        <div className="md:col-span-2 font-mono text-[10px] text-muted tracking-wide-super uppercase">
-          <span className="text-accent">04.</span> Stack
-        </div>
-
-        <div className="md:col-span-10 md:col-start-3">
+        {/* Label + Heading flush left */}
+        <div className="md:col-span-12 flex flex-col gap-2 mb-8">
+          <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
+            <span className="text-accent">04.</span> Stack
+          </div>
           <ScrollFloat
             animationDuration={0.6}
-            ease="power3.out"
+            ease={[0.16, 1, 0.3, 1]}
             scrollStart="top 95%"
             scrollEnd="bottom 20%"
             stagger={0.03}

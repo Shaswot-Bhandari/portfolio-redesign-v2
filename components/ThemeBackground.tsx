@@ -17,35 +17,31 @@ export default function ThemeBackground() {
   if (resolvedTheme === "light") {
     return (
       <Particles
-        particleColors={["#111111", "#444444", "#666666"]}
-        particleCount={180}
+        particleColors={["#111111"]}
+        particleCount={400}
         particleSpread={10}
-        speed={0.04}
-        particleBaseSize={70}
-        moveParticlesOnHover={false}
-        alphaParticles={true}
-        sizeRandomness={1.2}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover
+        alphaParticles
         disableRotation={false}
-        enableParallax={true}
-        parallaxStrength={0.06}
-        className="fixed inset-0 pointer-events-none z-[-1]"
+        pixelRatio={1}
+        className="fixed inset-0 pointer-events-none z-0"
       />
     );
   } else if (resolvedTheme === "dark") {
     return (
       <Particles
-        particleColors={["#ffffff", "#cccccc", "#aaaaaa"]}
-        particleCount={190}
+        particleColors={["#ffffff"]}
+        particleCount={400}
         particleSpread={10}
-        speed={0.05}
-        particleBaseSize={90}
-        moveParticlesOnHover={false}
-        alphaParticles={true}
-        sizeRandomness={1.2}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover
+        alphaParticles
         disableRotation={false}
-        enableParallax={true}
-        parallaxStrength={0.08}
-        className="fixed inset-0 pointer-events-none z-[-1]"
+        pixelRatio={1}
+        className="fixed inset-0 pointer-events-none z-0"
       />
     );
   }

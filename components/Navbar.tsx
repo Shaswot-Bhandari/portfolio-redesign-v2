@@ -137,7 +137,7 @@ export default function Navbar() {
                 menuBg="var(--bg-color)"
                 menuContentColor="var(--fg-color)"
               useFixedPosition={true}
-              animationEase="power3.out"
+              animationEase={[0.16, 1, 0.3, 1]}
               animationDuration={0.5}
               staggerDelay={0.12}
               items={[

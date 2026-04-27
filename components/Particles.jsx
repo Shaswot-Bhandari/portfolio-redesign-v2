@@ -102,17 +102,6 @@ const Particles = ({
       window.addEventListener('mousemove', handleMouseMove);
     }
 
-    // ← NEW: fade particles out as user scrolls through the hero
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      const fadeStart = heroHeight * 0.35;
-      const fadeEnd = heroHeight * 0.85;
-      const opacity = 1 - Math.min(1, Math.max(0, (scrollY - fadeStart) / (fadeEnd - fadeStart)));
-      container.style.opacity = opacity;
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
     const count = particleCount;
     const positions = new Float32Array(count * 3);
     const randoms = new Float32Array(count * 4);
@@ -158,8 +147,13 @@ const Particles = ({
       program.uniforms.uTime.value = elapsed * 0.001;
 
       if (moveParticlesOnHover) {
-        particles.position.x = -mouseRef.current.x * particleHoverFactor;
-        particles.position.y = -mouseRef.current.y * particleHoverFactor;
+        const isPastHero = window.scrollY > window.innerHeight * 0.75;
+        const targetX = isPastHero ? 0 : -mouseRef.current.x * particleHoverFactor;
+        const targetY = isPastHero ? 0 : -mouseRef.current.y * particleHoverFactor;
+        
+        // Smoothly interpolate current position towards target
+        particles.position.x += (targetX - particles.position.x) * 0.05;
+        particles.position.y += (targetY - particles.position.y) * 0.05;
       } else {
         particles.position.x = 0;
         particles.position.y = 0;
@@ -191,7 +185,6 @@ const Particles = ({
     animationFrameId = requestAnimationFrame(update);
     return () => {
       window.removeEventListener('resize', resize);
-      window.removeEventListener('scroll', handleScroll); // ← NEW: cleanup
       if (moveParticlesOnHover || enableParallax) {
         window.removeEventListener('mousemove', handleMouseMove);
       }
