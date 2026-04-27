@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import Credentials from "@/components/Credentials";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function SectionDivider() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
       <Credentials />
       <SectionDivider />
       <Contact />
+      <ScrollToTop />
     </main>
   );
 }
