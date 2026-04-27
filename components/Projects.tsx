@@ -41,7 +41,7 @@ const projects: Project[] = [
     role: "Visual Design",
     year: "2026",
     link: "https://www.behance.net/shaswotbhandari",
-    image: "/images/hero-mountain.jpg",
+    image: "/images/behance-showcase-preview.png",
     offset: "md:mt-48",
   },
 ];

@@ -141,3 +141,15 @@
     opacity: 0.055;
   }
 }
+
+/* Allow hero gradient to overlap the next section */
+#hero {
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+#about {
+  position: relative;
+  z-index: 0;
+}

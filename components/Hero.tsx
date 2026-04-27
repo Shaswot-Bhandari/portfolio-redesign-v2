@@ -1,15 +1,23 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion"; // ← CHANGED: added useScroll, useTransform
 
 export default function Hero() {
   const mousePosRef = useRef({ x: 0.5, y: 0.5 });
   const lerpedRef = useRef({ x: 0.5, y: 0.5 });
   const rafRef = useRef<number>(0);
   const gradientDivRef = useRef<HTMLDivElement | null>(null);
+  const heroRef = useRef<HTMLElement | null>(null); // ← NEW
 
   const [mounted, setMounted] = useState(false);
+
+  // ← NEW: tie content opacity to scroll position through the hero
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const contentOpacity = useTransform(scrollYProgress, [0.35, 0.85], [1, 0]);
 
   useEffect(() => {
     setMounted(true);
@@ -43,6 +51,7 @@ export default function Hero() {
 
   return (
     <section
+      ref={heroRef} // ← NEW
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 md:pt-36 overflow-hidden"
     >
@@ -57,8 +66,18 @@ export default function Hero() {
         />
       )}
 
-      <div className="max-w-7xl relative z-20">
-        
+      {/* ← NEW: bottom fade — melts hero into the next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none"
+        style={{
+          height: "45vh",
+          background: "linear-gradient(to bottom, transparent 0%, var(--background) 100%)",
+        }}
+      />
+
+      {/* ← CHANGED: wrapped in motion.div so content fades out while scrolling */}
+      <motion.div style={{ opacity: contentOpacity }} className="max-w-7xl relative z-20">
+
         {/* Raw Timestamp */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -79,7 +98,7 @@ export default function Hero() {
           >
             Design
           </motion.h1>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +117,7 @@ export default function Hero() {
           className="mt-20 md:mt-32 max-w-lg font-mono text-xs md:text-sm leading-relaxed text-muted"
         >
           <p>
-            I am <span className="text-foreground">Shaswot Bhandari</span>, a designer and developer. 
+            I am <span className="text-foreground">Shaswot Bhandari</span>, a designer and developer.
             I build simple interfaces and clear visual systems without unnecessary noise.
           </p>
           <div className="mt-8 pt-6 border-t border-muted/20 flex gap-8">
@@ -112,7 +131,8 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
-      </div>
+
+      </motion.div>
     </section>
   );
 }

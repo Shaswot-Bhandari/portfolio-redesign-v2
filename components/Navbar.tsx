@@ -83,7 +83,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2 border border-muted/30 rounded-full bg-surface/30 hover:bg-surface hover:border-foreground/30 text-foreground transition-all duration-300 group"
             >
-              <span>Resumé</span>
+              <span>Resume</span>
               <ArrowDownToLine size={14} className="opacity-70 group-hover:opacity-100 group-hover:translate-y-[2px] transition-all" />
             </a>
 

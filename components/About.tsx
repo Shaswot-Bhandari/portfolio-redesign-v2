@@ -31,10 +31,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-32 md:py-48 px-6 md:px-12 relative border-t border-muted/20 overflow-hidden"
+      className="relative bg-background pt-32 md:pt-48 px-6 md:px-12 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
-        
+
         {/* Timestamp */}
         <div className="md:col-span-2 font-mono text-[10px] text-muted tracking-wide-super uppercase">
           <span className="text-accent">02.</span> About
@@ -54,14 +54,14 @@ export default function About() {
         </div>
 
         {/* Image - Asymmetrical Placement & Interactive */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="md:col-span-4 relative group"
         >
-          <div 
+          <div
             className="relative w-full aspect-[3/4] overflow-hidden grayscale contrast-125 brightness-90 
                        cursor-zoom-in transition-all duration-700 ease-out
                        group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 
@@ -89,7 +89,7 @@ export default function About() {
         </motion.div>
 
         {/* Text Copy - Conversational & Raw */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -101,14 +101,14 @@ export default function About() {
               Hi, I&apos;m Shaswot. I like things that work well and look quiet.
             </p>
             <p>
-              I don&apos;t believe in decorating for the sake of decoration. I believe in 
-              structural integrity, clear hierarchies, and getting out of the user&apos;s way. 
-              My background is in Computer Science with a focus on AI, but my actual work is 
+              I don&apos;t believe in decorating for the sake of decoration. I believe in
+              structural integrity, clear hierarchies, and getting out of the user&apos;s way.
+              My background is in Computer Science with a focus on AI, but my actual work is
               making sure digital products don&apos;t feel robotic.
             </p>
             <p>
-              Currently studying at IIMS College in Kathmandu. Previously, I worked as an Intern at 
-              <span className="text-foreground"> Ajima Engineering Construction</span> (Remote) from Jan 2024 to Sep 2025, 
+              Currently studying at IIMS College in Kathmandu. Previously, I worked as an Intern at
+              <span className="text-foreground"> Ajima Engineering Construction</span> (Remote) from Jan 2024 to Sep 2025,
               focusing on graphic design, visual content creation, and digital marketing using Adobe Photoshop, Illustrator, and Premiere Pro.
             </p>
             <p>
@@ -148,10 +148,10 @@ export default function About() {
             </div>
           </div>
 
-          <a 
-            href="/images/Shaswot_Bhandari_CV.pdf" 
+          <a
+            href="/images/Shaswot_Bhandari_CV.pdf"
             download="Shaswot_Bhandari_CV.pdf"
-            target="_blank" 
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-block font-mono text-[10px] text-foreground uppercase tracking-wide-super hover:text-accent transition-colors w-fit border-b border-foreground/30 pb-1"
           >
@@ -174,7 +174,7 @@ export default function About() {
             aria-modal="true"
             className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-6 cursor-zoom-out"
           >
-            <button 
+            <button
               ref={closeButtonRef}
               aria-label="Close image"
               className="absolute top-6 right-6 md:top-10 md:right-10 text-muted hover:text-accent transition-colors p-2"
@@ -182,7 +182,7 @@ export default function About() {
             >
               <X size={32} strokeWidth={1} />
             </button>
-            
+
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
