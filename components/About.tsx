@@ -84,7 +84,7 @@ export default function About() {
         {/* Label + Heading flush left — spans full width */}
         <div className="md:col-span-12 flex flex-col gap-2 mb-8">
           <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
-            <span className="text-accent">02.</span> About
+            <span className="text-accent">01.</span> About
           </div>
           <ScrollFloat
             animationDuration={0.6}
@@ -129,6 +129,7 @@ export default function About() {
               src="/images/profile-photo.png"
               alt="Shaswot Bhandari"
               fill
+              priority
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
@@ -233,10 +234,10 @@ export default function About() {
               <button
                 ref={closeButtonRef}
                 aria-label="Close image"
-                className="absolute top-6 right-6 md:top-10 md:right-10 text-muted hover:text-accent transition-colors p-2"
+                className="fixed top-6 right-6 md:top-10 md:right-10 text-foreground hover:text-accent transition-colors p-3 bg-background/20 backdrop-blur-md rounded-full z-[110]"
                 onClick={() => setIsLightboxOpen(false)}
               >
-                <X size={32} strokeWidth={1} />
+                <X size={28} strokeWidth={2} />
               </button>
 
               <motion.div

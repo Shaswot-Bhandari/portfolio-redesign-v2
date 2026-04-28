@@ -83,15 +83,6 @@ export default function Hero() {
       {/* ← CHANGED: wrapped in motion.div so content fades out while scrolling */}
       <motion.div style={{ opacity: contentOpacity }} className="max-w-7xl relative z-20">
 
-        {/* Raw Timestamp */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="font-mono text-xs text-muted mb-12 tracking-wide-super uppercase"
-        >
-          <span className="text-accent">01.</span> Latent Space
-        </motion.div>
 
         {/* Asymmetrical Typography */}
         <div className="flex flex-col items-start gap-4 md:gap-6">

@@ -66,7 +66,7 @@ export default function Skills() {
         {/* Label + Heading flush left */}
         <div className="md:col-span-12 flex flex-col gap-2 mb-8">
           <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
-            <span className="text-accent">04.</span> Stack
+            <span className="text-accent">03.</span> Stack
           </div>
           <ScrollFloat
             animationDuration={0.6}

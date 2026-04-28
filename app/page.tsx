@@ -34,11 +34,11 @@ export default function Home() {
       <SectionDivider />
       <Projects />
       <SectionDivider />
-      <Gallery />
-      <SectionDivider />
       <Skills />
       <SectionDivider />
       <Credentials />
+      <SectionDivider />
+      <Gallery />
       <SectionDivider />
       <Contact />
       <ScrollToTop />

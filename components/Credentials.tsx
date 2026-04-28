@@ -76,7 +76,7 @@ export default function Credentials() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-start gap-2 mb-16 md:mb-24">
           <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
-            <span className="text-accent">05.</span> Credentials
+            <span className="text-accent">04.</span> Credentials
           </div>
           <ScrollFloat
             animationDuration={0.6}

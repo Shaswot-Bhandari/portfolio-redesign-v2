@@ -4,6 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { X } from "lucide-react";
 import ScrollFloat from "./ScrollFloat";
 import GlareHover from "./GlareHover";
 
@@ -11,7 +12,7 @@ const images = [
   { src: "/images/Apple-Juice-Ad.jpg",        alt: "Apple Juice Ad" },
   { src: "/images/Coffee-ad.jpg",              alt: "Coffee Ad" },
   { src: "/images/Hot-&-Spicy.jpg",            alt: "Hot & Spicy Poster" },
-  { src: "/images/Senna-(F1).jpg",             alt: "Ayrton Senna F1 Poster" },
+  { src: "/images/Senna-(F1).jpg",             alt: "Ayrton Senna F1 Poster", priority: true },
   { src: "/images/Sprite-Ad.jpg",              alt: "Sprite Ad" },
   { src: "/images/Untitled-1.jpg",             alt: "Untitled Creative" },
 ];
@@ -27,6 +28,7 @@ export default function Gallery() {
   useEffect(() => {
     if (!selectedImage) return;
 
+    document.body.style.overflow = "hidden";
     previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
     closeButtonRef.current?.focus();
 
@@ -71,6 +73,7 @@ export default function Gallery() {
 
     document.addEventListener("keydown", onKeyDown);
     return () => {
+      document.body.style.overflow = "unset";
       document.removeEventListener("keydown", onKeyDown);
       previouslyFocusedRef.current?.focus?.();
       previouslyFocusedRef.current = null;
@@ -87,7 +90,7 @@ export default function Gallery() {
         {/* Header */}
         <div className="flex flex-col items-start gap-2 mb-16 md:mb-24">
           <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
-            <span className="text-accent">06.</span> Archive
+            <span className="text-accent">05.</span> Archive
           </div>
           <ScrollFloat
             animationDuration={0.6}
@@ -145,6 +148,7 @@ export default function Gallery() {
                   alt={img.alt}
                   width={800}
                   height={1000}
+                  priority={!!img.priority}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-auto object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
                 />
@@ -178,17 +182,17 @@ export default function Gallery() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl"
+              className="relative w-full max-w-5xl flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={close}
-                className="absolute -top-2 -right-2 md:top-0 md:right-0 text-foreground bg-background/10 hover:bg-background/20 backdrop-blur-sm rounded-full w-10 h-10 flex items-center justify-center transition-colors"
+                className="fixed top-6 right-6 md:top-10 md:right-10 text-foreground bg-background/20 hover:bg-background/40 backdrop-blur-md rounded-full p-3 transition-all duration-300 z-[60] hover:scale-110"
                 aria-label="Close"
               >
-                <span className="text-2xl leading-none">&times;</span>
+                <X size={28} strokeWidth={1.5} />
               </button>
 
               <div className="w-full flex flex-col items-center">

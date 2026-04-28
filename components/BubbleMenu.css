@@ -24,8 +24,13 @@
   border-radius: 2px; transition: all 0.3s ease;
 }
 .menu-line.short { width: 14px; align-self: flex-end; }
-.menu-btn.open .menu-line { width: 20px; }
-.menu-btn.open .menu-line.short { width: 20px; }
+.menu-btn.open .menu-line:first-child {
+  transform: translateY(3.5px) rotate(45deg);
+}
+.menu-btn.open .menu-line.short {
+  width: 22px;
+  transform: translateY(-3.5px) rotate(-45deg);
+}
 .bubble-menu-items {
   display: none;
   z-index: 999;

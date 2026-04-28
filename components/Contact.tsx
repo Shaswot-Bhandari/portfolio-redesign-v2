@@ -69,7 +69,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto flex flex-col relative z-10">
         
         <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-4">
-          <span className="text-accent">07.</span> Let&apos;s Talk
+          <span className="text-accent">06.</span> Let&apos;s Talk
         </div>
 
         <div className="mb-24 md:mb-32">

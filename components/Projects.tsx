@@ -54,11 +54,11 @@ export default function Projects() {
       className="py-24 px-6 md:px-12 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <div className="flex flex-col items-start gap-2 mb-16 md:mb-24">
           <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase">
-            <span className="text-accent">03.</span> Selected Work
+            <span className="text-accent">02.</span> Selected Work
           </div>
           <ScrollFloat
             animationDuration={0.6}
@@ -101,7 +101,7 @@ export default function Projects() {
                     />
                   </div>
                 </GlareHover>
-                
+
                 <div className="flex flex-col space-y-1">
                   <h3 className="font-display text-2xl md:text-3xl tracking-tight-super text-foreground">
                     {project.title}
