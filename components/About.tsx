@@ -229,15 +229,15 @@ export default function About() {
               ref={dialogRef}
               role="dialog"
               aria-modal="true"
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-6 cursor-zoom-out"
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-4 md:p-10 cursor-zoom-out"
             >
               <button
                 ref={closeButtonRef}
                 aria-label="Close image"
-                className="fixed top-6 right-6 md:top-10 md:right-10 text-foreground hover:text-accent transition-colors p-3 bg-background/20 backdrop-blur-md rounded-full z-[110]"
+                className="fixed top-4 right-4 md:top-10 md:right-10 text-foreground hover:text-accent transition-colors p-2 md:p-3 bg-background/20 backdrop-blur-md rounded-full z-[110]"
                 onClick={() => setIsLightboxOpen(false)}
               >
-                <X size={28} strokeWidth={2} />
+                <X size={24} className="md:w-7 md:h-7" strokeWidth={2} />
               </button>
 
               <motion.div
@@ -245,7 +245,7 @@ export default function About() {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.95, opacity: 0, y: 20 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="relative w-full max-w-[calc(85vh*0.75)] aspect-[3/4] overflow-hidden shadow-2xl cursor-default border border-muted/20"
+                className="relative w-full max-w-4xl max-h-[85vh] md:max-h-[90vh] overflow-hidden shadow-2xl cursor-default border border-muted/20"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Image

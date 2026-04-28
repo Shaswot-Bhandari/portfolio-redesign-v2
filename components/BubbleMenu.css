@@ -18,12 +18,29 @@
 .logo-bubble { font-size: 1.1rem; font-weight: 700; pointer-events: none; }
 .bubble-logo { width: 28px; height: 28px; object-fit: contain; }
 .logo-content { display: flex; align-items: center; justify-content: center; }
-.menu-btn { border: none; flex-direction: column; gap: 5px; background: transparent; }
+.menu-btn { 
+  border: none; 
+  background: transparent;
+  padding: 0;
+}
+.menu-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  width: 22px;
+  transition: all 0.3s ease;
+}
 .menu-line {
   display: block; width: 22px; height: 2px;
-  border-radius: 2px; transition: all 0.3s ease;
+  border-radius: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.menu-line.short { width: 14px; align-self: flex-end; }
+.menu-line.short { 
+  width: 14px; 
+}
+.menu-btn.open .menu-icon-wrapper {
+  align-items: center;
+}
 .menu-btn.open .menu-line:first-child {
   transform: translateY(3.5px) rotate(45deg);
 }

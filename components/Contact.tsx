@@ -186,6 +186,7 @@ export default function Contact() {
                     name="name"
                     required
                     placeholder="Your Name"
+                    autoComplete="name"
                     className="w-full bg-transparent border-b border-muted/30 py-4 font-mono text-sm text-foreground placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors peer rounded-none"
                   />
                 </div>
@@ -198,6 +199,7 @@ export default function Contact() {
                     name="email"
                     required
                     placeholder="Your Email"
+                    autoComplete="email"
                     className="w-full bg-transparent border-b border-muted/30 py-4 font-mono text-sm text-foreground placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors peer rounded-none"
                   />
                 </div>

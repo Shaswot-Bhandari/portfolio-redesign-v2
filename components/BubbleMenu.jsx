@@ -60,8 +60,10 @@ export default function BubbleMenu({
         </div>
         <button type="button" className={`bubble toggle-bubble menu-btn ${isMenuOpen ? 'open' : ''}`}
           onClick={handleToggle} aria-label={menuAriaLabel} aria-pressed={isMenuOpen} style={{ background: menuBg }}>
-          <span className="menu-line" style={{ background: menuContentColor }} />
-          <span className="menu-line short" style={{ background: menuContentColor }} />
+          <div className="menu-icon-wrapper">
+            <span className="menu-line" style={{ background: menuContentColor }} />
+            <span className="menu-line short" style={{ background: menuContentColor }} />
+          </div>
         </button>
       </nav>
       <AnimatePresence>

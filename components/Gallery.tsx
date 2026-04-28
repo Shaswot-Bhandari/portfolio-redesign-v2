@@ -166,13 +166,24 @@ export default function Gallery() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
+            key="lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-[rgba(0,0,0,0.9)] backdrop-blur-sm flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 bg-[rgba(0,0,0,0.9)] backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
             onClick={close}
           >
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={close}
+              className="fixed top-4 right-4 md:top-10 md:right-10 text-foreground bg-background/20 hover:bg-background/40 backdrop-blur-md rounded-full p-2 md:p-3 transition-all duration-300 z-[60] hover:scale-110"
+              aria-label="Close"
+            >
+              <X size={24} className="md:w-7 md:h-7" strokeWidth={1.5} />
+            </button>
+
             <motion.div
               ref={dialogRef}
               role="dialog"
@@ -185,23 +196,13 @@ export default function Gallery() {
               className="relative w-full max-w-5xl flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={close}
-                className="fixed top-6 right-6 md:top-10 md:right-10 text-foreground bg-background/20 hover:bg-background/40 backdrop-blur-md rounded-full p-3 transition-all duration-300 z-[60] hover:scale-110"
-                aria-label="Close"
-              >
-                <X size={28} strokeWidth={1.5} />
-              </button>
-
               <div className="w-full flex flex-col items-center">
                 <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
                   width={2200}
                   height={1400}
-                  className="w-full max-h-[90vh] object-contain select-none"
+                  className="w-full max-h-[85vh] md:max-h-[90vh] object-contain select-none"
                   priority
                 />
                 <p className="mt-4 font-mono text-[10px] uppercase tracking-wide-super text-foreground/80">
