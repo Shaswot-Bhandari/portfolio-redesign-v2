@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeBackground from "@/components/ThemeBackground";
 import SplashCursorWrapper from "@/components/SplashCursorWrapper";
+import { Analytics } from "@vercel/analytics/next";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default function RootLayout({
           <ThemeBackground />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
