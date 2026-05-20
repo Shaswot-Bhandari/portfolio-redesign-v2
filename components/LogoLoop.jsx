@@ -20,7 +20,8 @@ const useResizeObserver = (callback, elements, dependencies) => {
     });
     callback();
     return () => { observers.forEach(observer => observer?.disconnect()); };
-  }, [callback, ...dependencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callback, elements, ...dependencies]);
 };
 
 const useImageLoader = (seqRef, onLoad, dependencies) => {
@@ -43,6 +44,7 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
         img.removeEventListener('error', handleImageLoad);
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLoad, seqRef, ...dependencies]);
 };
 
@@ -181,6 +183,7 @@ export const LogoLoop = memo(({
     const content = isNodeItem ? (
       <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>{item.node}</span>
     ) : (
+      /* eslint-disable-next-line @next/next/no-img-element */
       <img src={item.src} srcSet={item.srcSet} sizes={item.sizes} width={item.width}
         height={item.height} alt={item.alt ?? ''} title={item.title}
         loading="lazy" decoding="async" draggable={false} />
