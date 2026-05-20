@@ -43,16 +43,13 @@ export default function Contact() {
     
     try {
       abortRef.current = new AbortController();
-      const formObject = Object.fromEntries(formData.entries());
-      const jsonBody = JSON.stringify(formObject);
 
       const res = await fetch("https://formsubmit.co/ajax/shaswotbhandari1@gmail.com", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: jsonBody,
+        body: formData,
         signal: abortRef.current.signal,
       });
 
