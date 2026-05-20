@@ -60,6 +60,8 @@ export default function Contact() {
         setStatus("success");
         (e.target as HTMLFormElement).reset();
       } else {
+        const errText = await res.text();
+        console.error("FormSubmit error status:", res.status, errText);
         setStatus("error");
       }
     } catch (err: unknown) {
