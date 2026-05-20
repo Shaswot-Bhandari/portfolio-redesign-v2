@@ -44,7 +44,7 @@ export default function Contact() {
     try {
       abortRef.current = new AbortController();
 
-      const res = await fetch("https://formsubmit.co/ajax/shaswotbhandari1@gmail.com", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -68,10 +68,7 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 px-6 md:px-12 relative"
-    >
+    <section id="contact" className="py-24 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto flex flex-col relative z-10">
         
         <div className="font-mono text-[10px] text-muted tracking-wide-super uppercase mb-4">
@@ -92,7 +89,6 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-16">
           
-          {/* Left Column: Contact Details */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +102,6 @@ export default function Contact() {
             </h2>
 
             <div className="space-y-12">
-              {/* Email Detail with Copy */}
               <div className="flex flex-col gap-2 min-h-[5rem]">
                 <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted font-light">
                   Email to copy
@@ -120,7 +115,6 @@ export default function Contact() {
                     shaswotbhandari1@gmail.com
                   </button>
 
-                  {/* Copied Toast Overlay */}
                   <AnimatePresence>
                     {copied && (
                       <motion.div
@@ -137,13 +131,11 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Phone Detail */}
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted mb-4">Phone</p>
                 <p className="font-mono text-sm md:text-base text-foreground">+977 9861582254</p>
               </div>
 
-              {/* Location Detail */}
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted mb-4">Location</p>
                 <p className="font-mono text-sm md:text-base text-foreground">Kathmandu, Nepal</p>
@@ -151,7 +143,6 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Column: Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -180,10 +171,9 @@ export default function Contact() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-                {/* Prevent formsubmit captcha/pages if possible via hidden inputs */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                
+
+                <input type="hidden" name="access_key" value="918f2bbb-baf5-4e5c-8e66-7d035842c92b" />
+
                 <div className="relative">
                   <label htmlFor="name" className="sr-only">Your Name</label>
                   <input
@@ -248,7 +238,6 @@ export default function Contact() {
 
         </div>
 
-        {/* Footer Area */}
         <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end font-mono text-[10px] uppercase tracking-wide-super text-muted border-t border-muted/20 pt-8 mt-24 md:mt-40">
           <div className="flex flex-col gap-4 mb-8 md:mb-0">
             <p className="text-foreground">Elsewhere</p>
