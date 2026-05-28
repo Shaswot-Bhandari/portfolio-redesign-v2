@@ -97,9 +97,13 @@ export default function Contact() {
             className="flex flex-col items-start"
           >
             <h2 className="font-display text-4xl md:text-6xl text-foreground leading-[1.1] tracking-tight-super mb-12">
-              Have an idea?<br/>
-              <span className="text-muted">Let&apos;s build it.</span>
+              Got a project or opportunity? I&apos;d love to hear from you.
             </h2>
+
+            <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted font-light mb-12">
+              I&apos;m a student designer and developer from Kathmandu, open to freelance work, internships,
+              part-time, and full-time opportunities. Let&apos;s connect.
+            </p>
 
             <div className="space-y-12">
               <div className="flex flex-col gap-2 min-h-[5rem]">

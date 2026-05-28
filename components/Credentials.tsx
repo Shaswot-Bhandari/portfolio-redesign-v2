@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDownToLine } from "lucide-react";
 import ScrollFloat from "./ScrollFloat";
 
 export default function Credentials() {
@@ -210,18 +209,6 @@ export default function Credentials() {
 
       </div>
 
-        <div className="mt-16 flex justify-end">
-          <a
-            href="/images/Shaswot_Bhandari_CV.pdf"
-            download="Shaswot_Bhandari_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-super text-muted hover:text-foreground transition-colors"
-          >
-            <span className="border-b border-muted/30 pb-1">Download CV</span>
-            <ArrowDownToLine size={14} className="opacity-70" />
-          </a>
-        </div>
       </div>
     </section>
   );

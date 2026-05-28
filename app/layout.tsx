@@ -23,32 +23,33 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shaswotbhandari.com.np"),
-  title: "Shaswot Bhandari | Designer & Developer",
+  title: "Shaswot Bhandari | Student Designer & Developer in Kathmandu",
   description:
-    "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
+    "Shaswot Bhandari is a student designer and developer based in Kathmandu, Nepal — exploring UI/UX design, graphic design, and web development. Open to freelance, part-time, and full-time opportunities.",
+  keywords: [
+    "UI/UX designer Nepal",
+    "graphic designer Kathmandu",
+    "web developer Nepal",
+    "student designer developer Nepal",
+    "freelance designer Kathmandu",
+    "frontend developer Nepal",
+  ],
+  alternates: {
+    canonical: "https://www.shaswotbhandari.com.np",
+  },
   openGraph: {
-    title: "Shaswot Bhandari | Designer & Developer",
+    title: "Shaswot Bhandari | Student Designer & Developer in Kathmandu",
     description:
-      "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
+      "Shaswot Bhandari is a student designer and developer based in Kathmandu, Nepal — exploring UI/UX design, graphic design, and web development. Open to freelance, part-time, and full-time opportunities.",
     url: "https://shaswotbhandari.com.np",
     siteName: "Shaswot Bhandari",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Shaswot Bhandari | Designer & Developer",
-      },
-    ],
-    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shaswot Bhandari | Designer & Developer",
+    title: "Shaswot Bhandari | Student Designer & Developer in Kathmandu",
     description:
-      "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
-    images: ["/images/og-image.jpg"],
+      "Shaswot Bhandari is a student designer and developer based in Kathmandu, Nepal — exploring UI/UX design, graphic design, and web development. Open to freelance, part-time, and full-time opportunities.",
   },
 };
 
@@ -78,19 +79,40 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Shaswot Bhandari",
-              url: "https://shaswotbhandari.com.np",
-              jobTitle: "Web Developer & Designer",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Kathmandu",
-                addressCountry: "NP",
-              },
-              sameAs: [
-                "https://github.com/ShaswotBh",
-                "https://www.linkedin.com/in/shaswot-bhandari-508b73283",
-                "https://www.behance.net/shaswotbhandari",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://www.shaswotbhandari.com.np/#person",
+                  name: "Shaswot Bhandari",
+                  jobTitle: "Student Designer & Developer",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Kathmandu",
+                    addressCountry: "Nepal",
+                  },
+                  url: "https://www.shaswotbhandari.com.np",
+                  sameAs: ["https://github.com/Shaswot-Bhandari"],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.shaswotbhandari.com.np/#website",
+                  name: "Shaswot Bhandari Portfolio",
+                  url: "https://www.shaswotbhandari.com.np",
+                },
+                {
+                  "@type": "ProfilePage",
+                  "@id": "https://www.shaswotbhandari.com.np/#profile-page",
+                  name: "Shaswot Bhandari — Student Designer & Developer",
+                  description:
+                    "Portfolio of a student designer and developer from Kathmandu, Nepal, focused on UI/UX, graphic design, and web development",
+                  url: "https://www.shaswotbhandari.com.np",
+                  about: {
+                    "@id": "https://www.shaswotbhandari.com.np/#person",
+                  },
+                  isPartOf: {
+                    "@id": "https://www.shaswotbhandari.com.np/#website",
+                  },
+                },
               ],
             }),
           }}

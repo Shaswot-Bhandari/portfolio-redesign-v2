@@ -153,21 +153,17 @@ export default function About() {
         >
           <div className="font-mono text-xs leading-relaxed text-muted space-y-6 mb-12">
             <p>
-              Hi, I&apos;m Shaswot. I like things that work well and look quiet.
+              I&apos;m Shaswot Bhandari, a student designer and developer based in Kathmandu, Nepal.
             </p>
             <p>
-              I don&apos;t believe in decorating for the sake of decoration. I believe in
-              structural integrity, clear hierarchies, and getting out of the user&apos;s way.
-              My background is in Computer Science with a focus on AI, but my actual work is
-              making sure digital products don&apos;t feel robotic.
+              I explore UI/UX design, graphic design, and web development, with a focus on creating clean,
+              user-friendly digital experiences.
             </p>
             <p>
-              Currently studying at IIMS College in Kathmandu. Previously, I worked as an Intern at
-              <span className="text-foreground"> Ajima Engineering Construction</span> (Remote) from Jan 2024 to Sep 2025,
-              focusing on graphic design, visual content creation, and digital marketing using Adobe Photoshop, Illustrator, and Premiere Pro.
+              From wireframes to fully functional websites, I enjoy shaping ideas into thoughtful, practical products.
             </p>
             <p>
-              When I&apos;m not coding or aligning pixels, I&apos;m probably over-analyzing a typeface.
+              I&apos;m currently open to freelance projects, internships, and collaborations. Through team projects like SmartMatch, I&apos;m also gaining hands-on experience with backend systems, databases, and AI/NLP integrations — learning by building.
             </p>
           </div>
 

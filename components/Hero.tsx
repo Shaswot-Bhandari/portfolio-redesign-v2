@@ -113,8 +113,7 @@ export default function Hero() {
           className="mt-20 md:mt-32 max-w-lg font-mono text-xs md:text-sm leading-relaxed text-muted"
         >
           <p>
-            I am <span className="text-foreground">Shaswot Bhandari</span>, a designer and developer.
-            I build simple interfaces and clear visual systems without unnecessary noise.
+            From wireframes to websites — I design and develop with a focus on clean, user-friendly experiences.
           </p>
           <div className="mt-8 pt-6 border-t border-muted/20 flex gap-8">
             <div>

@@ -10,16 +10,22 @@ interface Project {
   role: string;
   year: string;
   image: string;
+  challenge: string;
+  tools: string;
+  outcome: string;
   link?: string;
   offset?: string; // Tailwind class for Y-offset to create asymmetry
 }
 
 const projects: Project[] = [
   {
-    title: "SmartMatch",
+    title: "SmartMatch Job Portal",
     role: "Full Stack + AI",
     year: "2026",
     image: "/images/7150.jpg",
+    challenge: "A team project building a smart job portal with AI-powered job matching and a better way to connect candidates with relevant roles.",
+    tools: "Python, PostgreSQL, pgvector, FastAPI, SQLAlchemy, Alembic, React, Docker",
+    outcome: "Worked on database design, AI/NLP matching logic, and frontend integration for the portal.",
     offset: "md:mt-0",
   },
   {
@@ -27,6 +33,9 @@ const projects: Project[] = [
     role: "Desktop · JavaFX",
     year: "2025",
     image: "/images/nepal-tourism.jpg",
+    challenge: "Make Nepal travel information easier to browse in a desktop application.",
+    tools: "Java, JavaFX, Scene Builder, FXML",
+    outcome: "Created a desktop tourism app with structured destination browsing and a cleaner user flow.",
     offset: "md:mt-32",
   },
   {
@@ -34,6 +43,9 @@ const projects: Project[] = [
     role: "Machine Learning",
     year: "2025",
     image: "/images/veggie-prediction.jpg",
+    challenge: "Estimate vegetable prices more accurately using data-driven predictions.",
+    tools: "Python, Pandas, scikit-learn, Jupyter Notebook",
+    outcome: "Built a machine learning model to forecast pricing patterns from historical data.",
     offset: "md:-mt-16",
   },
   {
@@ -42,6 +54,9 @@ const projects: Project[] = [
     year: "2026",
     link: "https://www.behance.net/shaswotbhandari",
     image: "/images/behance-showcase-preview.png",
+    challenge: "Present design work in a polished portfolio that highlights visual direction.",
+    tools: "Figma, Adobe Photoshop, Adobe Illustrator, Behance",
+    outcome: "Published a curated design showcase that strengthens the visual side of the portfolio.",
     offset: "md:mt-48",
   },
 ];
@@ -106,6 +121,9 @@ export default function Projects() {
                   <h3 className="font-display text-2xl md:text-3xl tracking-tight-super text-foreground">
                     {project.title}
                   </h3>
+                  <p className="font-mono text-[11px] leading-relaxed text-muted">Challenge: {project.challenge}</p>
+                  <p className="font-mono text-[11px] leading-relaxed text-muted">Tools: {project.tools}</p>
+                  <p className="font-mono text-[11px] leading-relaxed text-muted">Outcome: {project.outcome}</p>
                   <div className="flex justify-between font-mono text-[10px] uppercase tracking-wide-super text-muted pt-2 border-t border-muted/20">
                     <span>{project.role}</span>
                     <span>{project.year}</span>

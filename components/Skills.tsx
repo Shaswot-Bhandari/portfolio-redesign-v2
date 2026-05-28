@@ -31,16 +31,16 @@ const techLogos = [
 
 const skillCategories = [
   {
-    category: "Frontend & Interface",
-    skills: ["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "GSAP"],
+    category: "UI/UX & Graphic Design",
+    skills: ["Figma", "Adobe Creative Suite", "Photoshop", "Illustrator", "Prototyping", "Wireframing", "Visual Design"],
   },
   {
-    category: "Design & Direction",
-    skills: ["Figma", "Adobe Creative Suite", "Typography", "Prototyping", "Brand Identity"],
+    category: "Web & App Development",
+    skills: ["HTML", "CSS", "JavaScript", "React", "React.js", "Next.js", "TypeScript", "Tailwind CSS", "Python", "PostgreSQL", "FastAPI", "Docker"],
   },
   {
-    category: "Backend & Systems",
-    skills: ["Node.js", "Python", "SQL", "Git", "REST APIs", "Machine Learning Concepts"],
+    category: "Tools & Workflow",
+    skills: ["Git", "GitHub", "VS Code", "Node.js", "Figma Dev Mode", "Framer Motion", "GSAP"],
   },
 ];
 
@@ -91,12 +91,19 @@ export default function Skills() {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-16 border-b border-muted/10 pb-8"
             >
-              <h3 className="w-48 font-mono text-[10px] uppercase tracking-wide-super text-foreground shrink-0">
-                {group.category}
-              </h3>
-              <p className="font-display text-2xl md:text-4xl text-muted tracking-tight-super leading-snug">
-                {group.skills.join(", ")}
-              </p>
+              <div className="w-48 shrink-0">
+                <h3 className="font-mono text-[10px] uppercase tracking-wide-super text-foreground">
+                  {group.category}
+                </h3>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-mono text-[10px] uppercase tracking-wide-super text-muted mb-2">
+                  Skills
+                </h3>
+                <p className="font-display text-2xl md:text-4xl text-muted tracking-tight-super leading-snug">
+                  {group.skills.join(", ")}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

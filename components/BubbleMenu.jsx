@@ -21,6 +21,7 @@ export default function BubbleMenu({
   const [isDesktop, setIsDesktop] = useState(true);
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
   const containerClassName = ['bubble-menu', useFixedPosition ? 'fixed' : 'absolute', className].filter(Boolean).join(' ');
+  const menuItemsClassName = ['bubble-menu-items', useFixedPosition ? 'fixed' : 'absolute', isMenuOpen ? 'open' : ''].filter(Boolean).join(' ');
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -50,6 +51,17 @@ export default function BubbleMenu({
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <>
       <nav className={containerClassName} style={style} aria-label="Main navigation">
@@ -69,11 +81,18 @@ export default function BubbleMenu({
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className={`bubble-menu-items ${useFixedPosition ? 'fixed' : 'absolute'}`} 
+            className={menuItemsClassName} 
             aria-hidden={!isMenuOpen}
+            role="dialog"
+            aria-modal="true"
             initial="closed"
             animate="open"
             exit="closed"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                closeMenu();
+              }
+            }}
             variants={{
               open: {
                 display: 'flex',
