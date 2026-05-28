@@ -9,12 +9,12 @@ import ScrollFloat from "./ScrollFloat";
 import GlareHover from "./GlareHover";
 
 const images = [
-  { src: "/images/Apple-Juice-Ad.jpg",        alt: "Apple Juice Ad" },
-  { src: "/images/Coffee-ad.jpg",              alt: "Coffee Ad" },
-  { src: "/images/Hot-&-Spicy.jpg",            alt: "Hot & Spicy Poster" },
-  { src: "/images/Senna-(F1).jpg",             alt: "Ayrton Senna F1 Poster", priority: true },
-  { src: "/images/Sprite-Ad.jpg",              alt: "Sprite Ad" },
-  { src: "/images/Untitled-1.jpg",             alt: "Untitled Creative" },
+  { src: "/images/Apple-Juice-Ad.jpg",        alt: "Apple Juice advertisement graphic design by Shaswot Bhandari" },
+  { src: "/images/Coffee-ad.jpg",              alt: "Coffee advertisement poster graphic design by Shaswot Bhandari" },
+  { src: "/images/Hot-&-Spicy.jpg",            alt: "Hot and Spicy food poster graphic design by Shaswot Bhandari" },
+  { src: "/images/Senna-(F1).jpg",             alt: "Ayrton Senna F1 tribute poster designed by Shaswot Bhandari", priority: true },
+  { src: "/images/Sprite-Ad.jpg",              alt: "Sprite beverage advertisement graphic design by Shaswot Bhandari" },
+  { src: "/images/Untitled-1.jpg",             alt: "Abstract creative design artwork by Shaswot Bhandari" },
 ];
 
 export default function Gallery() {

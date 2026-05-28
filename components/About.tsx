@@ -127,7 +127,7 @@ export default function About() {
           >
             <Image
               src="/images/profile-photo.png"
-              alt="Shaswot Bhandari"
+              alt="Shaswot Bhandari - web developer and designer based in Kathmandu, Nepal"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -250,7 +250,7 @@ export default function About() {
               >
                 <Image
                   src="/images/profile-photo.png"
-                  alt="Shaswot Bhandari"
+                  alt="Shaswot Bhandari - web developer and designer based in Kathmandu, Nepal"
                   fill
                   sizes="(max-width: 768px) 90vw, 50vw"
                   className="object-cover"

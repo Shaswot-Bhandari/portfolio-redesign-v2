@@ -94,7 +94,7 @@ export default function Projects() {
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} - ${project.role} project by Shaswot Bhandari`}
                       fill
                       sizes="(max-width: 768px) 100vw, 48vw"
                       className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"

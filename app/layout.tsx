@@ -23,13 +23,13 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shaswotbhandari.com.np"),
-  title: "Shaswot Bhandari — Designer & Developer",
+  title: "Shaswot Bhandari | Designer & Developer",
   description:
-    "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+    "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
   openGraph: {
-    title: "Shaswot Bhandari — Designer & Developer",
+    title: "Shaswot Bhandari | Designer & Developer",
     description:
-      "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+      "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
     url: "https://shaswotbhandari.com.np",
     siteName: "Shaswot Bhandari",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Shaswot Bhandari — Designer & Developer",
+        alt: "Shaswot Bhandari | Designer & Developer",
       },
     ],
     locale: "en_US",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shaswot Bhandari — Designer & Developer",
+    title: "Shaswot Bhandari | Designer & Developer",
     description:
-      "Portfolio of Shaswot Bhandari, a designer and developer building simple interfaces and clear visual systems.",
+      "Portfolio of Shaswot Bhandari — web developer and designer based in Nepal. Explore my projects, skills, and get in touch.",
     images: ["/images/og-image.jpg"],
   },
 };
@@ -73,6 +73,28 @@ export default function RootLayout({
           <ThemeBackground />
           {children}
         </ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shaswot Bhandari",
+              url: "https://shaswotbhandari.com.np",
+              jobTitle: "Web Developer & Designer",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kathmandu",
+                addressCountry: "NP",
+              },
+              sameAs: [
+                "https://github.com/ShaswotBh",
+                "https://www.linkedin.com/in/shaswot-bhandari-508b73283",
+                "https://www.behance.net/shaswotbhandari",
+              ],
+            }),
+          }}
+        />
         <Analytics />
         <SpeedInsights />
       </body>

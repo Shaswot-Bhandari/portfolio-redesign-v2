@@ -95,14 +95,14 @@ export default function Hero() {
             Design
           </motion.h1>
 
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-[clamp(2.6rem,10vw,11rem)] leading-[0.82] tracking-tight-super text-foreground/40 italic ml-0 md:ml-32"
           >
             with intent.
-          </motion.h1>
+          </motion.h2>
         </div>
 
         {/* Minimal Bio */}
