@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, Loader2 } from "lucide-react";
 import TrueFocus from "./TrueFocus";
+import ScrollFloat from "./ScrollFloat";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -96,25 +97,26 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-start"
           >
-            <h2 className="font-display text-4xl md:text-6xl text-foreground leading-[1.1] tracking-tight-super mb-12">
-              Got a project or opportunity? I&apos;d love to hear from you.
+            <h2 className="font-display text-3xl md:text-4xl text-foreground leading-[1.05] tracking-tight-super mb-8 max-w-xl">
+              <span className="block">Got a project or opportunity?</span>
+              <span className="block italic text-muted/85">I&apos;d love to hear from you.</span>
             </h2>
 
-            <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted font-light mb-12">
+            <p className="font-sans text-sm md:text-base leading-relaxed text-muted max-w-xl mb-12">
               I&apos;m a student designer and developer from Kathmandu, open to freelance work, internships,
               part-time, and full-time opportunities. Let&apos;s connect.
             </p>
 
             <div className="space-y-12">
               <div className="flex flex-col gap-2 min-h-[5rem]">
-                <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted font-light">
+                <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-muted/80 font-medium">
                   Email to copy
                 </p>
                 <div className="relative block">
                   <button
                     onClick={handleCopy}
                     aria-label="Copy email address"
-                    className="font-mono text-lg md:text-xl text-foreground hover:text-accent transition-colors duration-300 text-left cursor-copy block pt-1"
+                    className="font-sans text-lg md:text-xl text-foreground hover:text-accent transition-colors duration-300 text-left cursor-copy block pt-1"
                   >
                     shaswotbhandari1@gmail.com
                   </button>
@@ -125,7 +127,7 @@ export default function Contact() {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        className="absolute top-full left-0 mt-3 md:top-1/2 md:left-auto md:-right-32 md:mt-0 md:-translate-y-1/2 flex items-center gap-2 bg-foreground text-background px-3 py-1.5 rounded-full font-mono text-[10px] uppercase tracking-wide-super pointer-events-none shadow-lg"
+                        className="absolute top-full left-0 mt-3 md:top-1/2 md:left-auto md:-right-32 md:mt-0 md:-translate-y-1/2 flex items-center gap-2 bg-foreground text-background px-3 py-1.5 rounded-full font-sans text-[10px] uppercase tracking-[0.18em] pointer-events-none shadow-lg"
                       >
                         <Check size={12} strokeWidth={2} />
                         Copied
@@ -136,13 +138,13 @@ export default function Contact() {
               </div>
 
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted mb-4">Phone</p>
-                <p className="font-mono text-sm md:text-base text-foreground">+977 9861582254</p>
+                <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-muted/80 mb-4">Phone</p>
+                <p className="font-sans text-sm md:text-base text-foreground">+977 9861582254</p>
               </div>
 
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-wide-super text-muted mb-4">Location</p>
-                <p className="font-mono text-sm md:text-base text-foreground">Kathmandu, Nepal</p>
+                <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-muted/80 mb-4">Location</p>
+                <p className="font-sans text-sm md:text-base text-foreground">Kathmandu, Nepal</p>
               </div>
             </div>
           </motion.div>
@@ -163,12 +165,12 @@ export default function Contact() {
                   <Check size={24} />
                 </div>
                 <h3 className="font-display text-3xl text-foreground mb-4">Message sent.</h3>
-                <p className="font-mono text-sm text-muted">
+                <p className="font-sans text-sm leading-relaxed text-muted">
                   Thank you for reaching out. I will get back to you as soon as possible.
                 </p>
                 <button 
                   onClick={() => setStatus("idle")}
-                  className="mt-8 font-mono text-xs text-foreground hover:text-accent uppercase tracking-wide-super border-b border-foreground/30 hover:border-accent pb-1 transition-colors"
+                  className="mt-8 font-sans text-xs text-foreground hover:text-accent uppercase tracking-[0.18em] border-b border-foreground/30 hover:border-accent pb-1 transition-colors"
                 >
                   Send another message
                 </button>
@@ -225,7 +227,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="group flex items-center gap-4 w-fit mt-4 font-mono text-xs uppercase tracking-wide-super text-foreground hover:text-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group flex items-center gap-4 w-fit mt-4 font-sans text-xs uppercase tracking-[0.18em] text-foreground hover:text-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="border-b border-foreground/30 group-hover:border-accent pb-1 transition-colors">
                     {status === "loading" ? "Sending..." : "Send Message"}
